@@ -8,14 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var lastDragPosition: CGSize = .zero
+    let sceneWrapper = SceneViewWrapper()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ZStack {
+            sceneWrapper
+                .gesture(
+                    DragGesture()
+                        .onChanged { value in
+                            let offset = CGSize(
+                                width: value.translation.width - lastDragPosition.width,
+                                height: value.translation.height - lastDragPosition.height
+                            )
+                            sceneWrapper.handleDrag(offset: offset)
+                            lastDragPosition = value.translation
+                        }
+                        .onEnded { _ in
+                            lastDragPosition = .zero
+                        }
+                )
         }
-        .padding()
     }
 }
 

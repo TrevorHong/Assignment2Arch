@@ -35,14 +35,14 @@
 			path = Assignment2;
 			sourceTree = "<group>";
 		};
-		2EB4B8DD2D712F5900A94B58 /* Assignment2Tests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Assignment2Tests;
-			sourceTree = "<group>";
-		};
 		2EB4B8E72D712F5900A94B58 /* Assignment2UITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Assignment2UITests;
+			sourceTree = "<group>";
+		};
+		9C260B312D7135F700A1346F /* Assignment2Tests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Assignment2Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -76,7 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				2EB4B8CC2D712F5700A94B58 /* Assignment2 */,
-				2EB4B8DD2D712F5900A94B58 /* Assignment2Tests */,
+				9C260B312D7135F700A1346F /* Assignment2Tests */,
 				2EB4B8E72D712F5900A94B58 /* Assignment2UITests */,
 				2EB4B8CB2D712F5700A94B58 /* Products */,
 			);
@@ -109,6 +109,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				2EB4B8CC2D712F5700A94B58 /* Assignment2 */,
+				9C260B312D7135F700A1346F /* Assignment2Tests */,
 			);
 			name = Assignment2;
 			packageProductDependencies = (
@@ -129,9 +130,6 @@
 			);
 			dependencies = (
 				2EB4B8DC2D712F5900A94B58 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				2EB4B8DD2D712F5900A94B58 /* Assignment2Tests */,
 			);
 			name = Assignment2Tests;
 			packageProductDependencies = (
