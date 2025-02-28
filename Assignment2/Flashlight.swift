@@ -17,18 +17,18 @@ class Flashlight {
     private func setupFlashlight() {
         let light = SCNLight()
         light.type = .spot
-        light.castsShadow = false  // No shadows needed
+        light.castsShadow = false
         light.color = UIColor.white
-        light.intensity = 80000  // Bright but focused
-        light.spotInnerAngle = 2  // 🔄 Make the inner circle small
-        light.spotOuterAngle = 5  // 🔄 Make the outer beam small
+        light.intensity = 80000
+        light.spotInnerAngle = 2
+        light.spotOuterAngle = 5
         light.shadowColor = UIColor.black.withAlphaComponent(0.5)
-        light.zFar = 20  // ✅ Prevents the light from spreading too far
+        light.zFar = 20
         light.zNear = 0.1
 
         lightNode.light = light
-        lightNode.position = SCNVector3(0, 5, 0)  // ✅ Start in front of the camera
-        lightNode.eulerAngles = SCNVector3(0, 0, 0)  // ✅ Keep horizontal
+        lightNode.position = SCNVector3(0, 5, 0)
+        lightNode.eulerAngles = SCNVector3(0, 0, 0)
         
         let sphere = SCNSphere(radius: 0.2)
         sphere.firstMaterial?.diffuse.contents = UIColor.red

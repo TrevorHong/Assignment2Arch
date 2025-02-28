@@ -9,28 +9,43 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var lastDragPosition: CGSize = .zero
+    @State private var isNightMode: Bool = true 
     let sceneWrapper = SceneViewWrapper()
 
     var body: some View {
         ZStack {
-            sceneWrapper
-                .gesture(
-                    DragGesture()
-                        .onChanged { value in
-                            let offset = CGSize(
-                                width: value.translation.width - lastDragPosition.width,
-                                height: value.translation.height - lastDragPosition.height
-                            )
-                            sceneWrapper.handleDrag(offset: offset)
-                            lastDragPosition = value.translation
-                        }
-                        .onEnded { _ in
-                            lastDragPosition = .zero
-                        }
-                )
+            VStack {
+                sceneWrapper
+                    .gesture(
+                        DragGesture()
+                            .onChanged { value in
+                                let offset = CGSize(
+                                    width: value.translation.width - lastDragPosition.width,
+                                    height: value.translation.height - lastDragPosition.height
+                                )
+                                sceneWrapper.handleDrag(offset: offset)
+                                lastDragPosition = value.translation
+                            }
+                            .onEnded { _ in
+                                lastDragPosition = .zero
+                            }
+                    )
+
+                Button(action: {
+                }) {
+                    Text("Switch Time")
+                        .font(.headline)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding()
+            }
         }
     }
 }
+
 
 #Preview {
     ContentView()
