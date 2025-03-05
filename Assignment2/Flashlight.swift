@@ -20,15 +20,18 @@ class Flashlight {
         light.castsShadow = false
         light.color = UIColor.white
         light.intensity = 80000
-        light.spotInnerAngle = 2
-        light.spotOuterAngle = 5
+        light.spotInnerAngle = 10
+        light.spotOuterAngle = 30
         light.shadowColor = UIColor.black.withAlphaComponent(0.5)
         light.zFar = 20
         light.zNear = 0.1
 
         lightNode.light = light
         lightNode.position = SCNVector3(0, 5, 0)
-        lightNode.eulerAngles = SCNVector3(0, 0, 0)
+        
+        //Shines downward
+        //Set SCNVector3 to (0, 0, 0) to shine forward
+        lightNode.eulerAngles = SCNVector3(-Double.pi / 2, 0, 0)
         
         let sphere = SCNSphere(radius: 0.2)
         sphere.firstMaterial?.diffuse.contents = UIColor.red

@@ -44,16 +44,16 @@ struct ContentView: View {
                 .padding()
             }
         }}
+    
+//    let scene = TestView()
 //    var body: some View {
-//        VStack{
-//            Text("Maze Scene")
-//                .font(.title)
-//                .padding()
-//            let scene = GenerateMaze()
-//            SceneView(scene: scene, options: [.allowsCameraControl])
-//                .edgesIgnoringSafeArea(.all)
+//        ZStack{
+//            VStack{
+//                scene
+//                    .edgesIgnoringSafeArea(.all)  // Optional: To make the scene take up the full screen
+//            }
 //        }
-//    }
+//        }
 }
 
 
