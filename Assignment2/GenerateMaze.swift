@@ -30,25 +30,24 @@ class GenerateMaze: SCNScene {
 
         
         super.init()
-        
-//        background.contents = UIColor.black
-        
+                
         createMaze()
         setupMaze()
 //        setupCamera()
 
     }
     
+    func setupCamera(){
+        let camera = SCNCamera()
+        cameraNode.camera = camera
+        cameraNode.position = SCNVector3(0, 5, 5)
+        cameraNode.eulerAngles = SCNVector3(-Float.pi/4, Float.pi/4, 0)
+        
+        rootNode.addChildNode(cameraNode)
+    }
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
- 
-    func setupCamera() {
-        let camera = SCNCamera() // Create Camera object
-        cameraNode.camera = camera // Give the cameraNode a camera
-        cameraNode.position = SCNVector3(5, 5, 5) // Set the position to (5, 5, 5)
-        cameraNode.eulerAngles = SCNVector3(-Float.pi/4, Float.pi/4, 0) // Set the pitch, yaw, and roll
-        rootNode.addChildNode(cameraNode) // Add the cameraNode to the scene
     }
     
     func createMaze() {

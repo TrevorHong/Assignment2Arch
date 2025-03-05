@@ -31,7 +31,7 @@ struct ContentView: View {
                                 lastDragPosition = .zero
                             }
                     )
-
+                
                 Button(action: {
                 }) {
                     Text("Switch Time")
@@ -43,17 +43,17 @@ struct ContentView: View {
                 }
                 .padding()
             }
-          
-    var body: some View {
-        VStack{
-            Text("Maze Scene")
-                .font(.title)
-                .padding()
-            let scene = GenerateMaze()
-            SceneView(scene: scene, options: [.allowsCameraControl])
-                .edgesIgnoringSafeArea(.all)
-        }
-    }
+        }}
+//    var body: some View {
+//        VStack{
+//            Text("Maze Scene")
+//                .font(.title)
+//                .padding()
+//            let scene = GenerateMaze()
+//            SceneView(scene: scene, options: [.allowsCameraControl])
+//                .edgesIgnoringSafeArea(.all)
+//        }
+//    }
 }
 
 
