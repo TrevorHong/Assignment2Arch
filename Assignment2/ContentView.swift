@@ -6,16 +6,19 @@
 //
 
 import SwiftUI
+import SceneKit
 
 struct ContentView: View {
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        VStack{
+            Text("Maze Scene")
+                .font(.title)
+                .padding()
+            let scene = GenerateMaze()
+            SceneView(scene: scene, options: [.allowsCameraControl])
+                .edgesIgnoringSafeArea(.all)
         }
-        .padding()
     }
 }
 
