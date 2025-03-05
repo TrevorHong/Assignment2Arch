@@ -9,6 +9,7 @@ import SceneKit
 
 class Flashlight {
     private let lightNode = SCNNode()
+    
 
     init() {
         setupFlashlight()
@@ -46,14 +47,14 @@ class Flashlight {
         return lightNode
     }
 
-    @MainActor
-    func handleDrag(offset: CGSize) {
-        let deltaX = Float(offset.width) * 0.05
-        let deltaZ = Float(offset.height) * 0.05
-
-        lightNode.position.x += deltaX
-        lightNode.position.z -= deltaZ
-
-        print("Flashlight moved to \(lightNode.position)")
-    }
+//    @MainActor
+//    func handleDrag(offset: CGSize) {
+//        let deltaX = Float(offset.width) * 0.05
+//        let deltaZ = Float(offset.height) * 0.05
+//
+//        lightNode.position.x += deltaX
+//        lightNode.position.z -= deltaZ
+//
+//        print("Flashlight moved to \(lightNode.position)")
+//    }
 }

@@ -31,6 +31,12 @@ struct ContentView: View {
                                 lastDragPosition = .zero
                             }
                     )
+                    .gesture(
+                        TapGesture()
+                            .onEnded {
+                                sceneWrapper.handleTap()
+                            }
+                    )
                 Button("Toggle Ambient Light") {
                     sceneWrapper.toggleAmbientLight()
                 }
