@@ -13,6 +13,7 @@ struct SceneViewWrapper: UIViewRepresentable {
     private let flashlight = Flashlight()
     private let ambientLightNode = SCNNode()
     private let addCube = AddCube()
+    private let ambientLight = SwitchTime()
     
     let mazeGenerator = GenerateMaze()
     
@@ -30,6 +31,7 @@ struct SceneViewWrapper: UIViewRepresentable {
         addFlashlightToScene()
         addCubeToScene()
         startCubeRotation()
+        addAmbientLightToScene()
         
         scnView.debugOptions = [.showLightExtents, .showLightInfluences, .showPhysicsShapes]
         
@@ -81,5 +83,15 @@ struct SceneViewWrapper: UIViewRepresentable {
         let rotateAction = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat.pi / 4, z: 0, duration: 1.0))
         cubeNode.runAction(rotateAction)
     }
+    
+    func addAmbientLightToScene(){
+        let ambientLight = ambientLight.getLightNode()
+        mazeGenerator.rootNode.addChildNode(ambientLight)
+    }
+    
+    func toggleAmbientLight() {
+        ambientLightNode.isHidden.toggle()
+    }
+    
 }
 

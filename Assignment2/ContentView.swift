@@ -31,17 +31,13 @@ struct ContentView: View {
                                 lastDragPosition = .zero
                             }
                     )
-                
-                Button(action: {
-                }) {
-                    Text("Switch Time")
-                        .font(.headline)
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+                Button("Toggle Ambient Light") {
+                    sceneWrapper.toggleAmbientLight()
                 }
                 .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(10)
             }
         }}
     
