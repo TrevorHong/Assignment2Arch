@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SceneKit
 
 struct ContentView: View {
     @State private var lastDragPosition: CGSize = .zero
@@ -42,6 +43,15 @@ struct ContentView: View {
                 }
                 .padding()
             }
+          
+    var body: some View {
+        VStack{
+            Text("Maze Scene")
+                .font(.title)
+                .padding()
+            let scene = GenerateMaze()
+            SceneView(scene: scene, options: [.allowsCameraControl])
+                .edgesIgnoringSafeArea(.all)
         }
     }
 }
