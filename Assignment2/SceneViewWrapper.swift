@@ -12,6 +12,7 @@ struct SceneViewWrapper: UIViewRepresentable {
     //    private let scene = SCNScene()
     private let flashlight = Flashlight()
     private let ambientLightNode = SCNNode()
+    private let addCube = AddCube()
     
     let mazeGenerator = GenerateMaze()
     
@@ -27,7 +28,8 @@ struct SceneViewWrapper: UIViewRepresentable {
         
         addCameraToScene()
         addFlashlightToScene()
-
+        addCubeToScene()
+        startCubeRotation()
         
         scnView.debugOptions = [.showLightExtents, .showLightInfluences, .showPhysicsShapes]
         
@@ -40,6 +42,15 @@ struct SceneViewWrapper: UIViewRepresentable {
     func handleDrag(offset: CGSize) {
         Task { @MainActor in
             flashlight.handleDrag(offset: offset)
+        }
+    }
+    
+    func addCubeToScene() {
+        if let cubeNode = addCube.rootNode.childNode(withName: "The Cube", recursively: true) {
+            mazeGenerator.rootNode.addChildNode(cubeNode)
+            print("Cube added to maze scene")
+        } else {
+            print("Cube node not found in AddCube scene")
         }
     }
     
@@ -59,6 +70,16 @@ struct SceneViewWrapper: UIViewRepresentable {
     func addFlashlightToScene(){
         let flashlightNode = flashlight.getLightNode()
         mazeGenerator.rootNode.addChildNode(flashlightNode)
+    }
+    
+    func startCubeRotation() {
+        guard let cubeNode = mazeGenerator.rootNode.childNode(withName: "The Cube", recursively: true) else {
+            print("Cube not found for rotation")
+            return
+        }
+        
+        let rotateAction = SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: CGFloat.pi / 4, z: 0, duration: 1.0))
+        cubeNode.runAction(rotateAction)
     }
 }
 
