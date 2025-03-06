@@ -10,7 +10,9 @@ import SceneKit
 
 struct ContentView: View {
     @State private var lastDragPosition: CGSize = .zero
-    @State private var isNightMode: Bool = true 
+    @State private var isNightMode: Bool = true
+    @State private var isFogEnabled = false
+
     let sceneWrapper = SceneViewWrapper()
 
     var body: some View {
@@ -57,6 +59,16 @@ struct ContentView: View {
                 .background(Color.blue)
                 .foregroundColor(.white)
                 .cornerRadius(10)
+                Button(action: {
+                            isFogEnabled.toggle()
+                            sceneWrapper.toggleFog(isEnabled: isFogEnabled)
+                        }) {
+                            Text(isFogEnabled ? "Disable Fog" : "Enable Fog")
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
             }
         }}
     
