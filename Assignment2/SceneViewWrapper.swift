@@ -58,7 +58,12 @@ struct SceneViewWrapper: UIViewRepresentable {
     func addCubeToScene() {
         if let cubeNode = addCube.rootNode.childNode(withName: "The Cube", recursively: true) {
             mazeGenerator.rootNode.addChildNode(cubeNode)
-            print("Cube added to maze scene")
+//            print("Cube added to maze scene")
+            print("cube world position: \(cubeNode.worldPosition)")
+            print("cube relative position: \(cubeNode.position)")
+
+            
+
         } else {
             print("Cube node not found in AddCube scene")
         }
@@ -69,7 +74,7 @@ struct SceneViewWrapper: UIViewRepresentable {
         let cameraNode = SCNNode()
         let camera = SCNCamera()
         cameraNode.camera = camera
-        cameraNode.position = SCNVector3(x: 5, y: 5, z: 5)  // Adjust the camera position
+        cameraNode.position = SCNVector3(x: 1, y: 1, z: 1)  // Adjust the camera position
 //        cameraNode.eulerAngles = SCNVector3(-Float.pi / 4, Float.pi / 4, 0)
         cameraNode.eulerAngles = SCNVector3(0, 0, 0)
         
@@ -82,6 +87,10 @@ struct SceneViewWrapper: UIViewRepresentable {
         
         // Add the flashlight and attach it to the camera node
         addFlashlightToScene(parentNode: cameraNode)
+        print("Camera world position: \(cameraNode.worldPosition)")
+        print("Camera relative position: \(cameraNode.position)")
+
+
     }
 
     func addFlashlightToScene(parentNode: SCNNode) {
@@ -130,12 +139,12 @@ struct SceneViewWrapper: UIViewRepresentable {
         let eulerAngles = cameraNode.eulerAngles
         
         // Calculate the forward direction based on the camera's yaw (y-axis) and pitch (x-axis)
-        let forwardX = sin(Double(eulerAngles.y)) * cos(Double(eulerAngles.x))
-        let forwardY = sin(Double(eulerAngles.x))
-        let forwardZ = cos(Double(eulerAngles.y)) * cos(Double(eulerAngles.x))
+        let forwardX = sin(Double(eulerAngles.y))
+        let forwardZ = cos(Double(eulerAngles.y))
+        let forwardY: Float = 0.0  // Ignore vertical movement
         
-        // Create a direction vector based on the camera's rotation
-        let forward = SCNVector3(Float(forwardX), Float(forwardY), Float(forwardZ))
+        // Create a direction vector based on yaw rotation only (no vertical movement)
+        let forward = SCNVector3(Float(forwardX), forwardY, Float(forwardZ))
         
         // Define how far the camera should move when a tap is detected
         let moveDistance: Float = -1.0 // You can adjust this value for faster/slower movement
