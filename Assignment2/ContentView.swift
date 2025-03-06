@@ -12,6 +12,8 @@ struct ContentView: View {
     @State private var lastDragPosition: CGSize = .zero
     @State private var isNightMode: Bool = true
     @State private var isFogEnabled = false
+    @State private var fogDensityText: String = "1.0"
+    
 
     let sceneWrapper = SceneViewWrapper()
 
@@ -69,7 +71,21 @@ struct ContentView: View {
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
                         }
+                Button("Apply Fog Density") {
+                                if let density = Double(fogDensityText) {
+                                    sceneWrapper.updateFogDensity(density)
+                                }
+                            }
+                            .padding()
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                TextField("Enter Fog Density", text: $fogDensityText)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .keyboardType(.decimalPad) // Allow decimal input
+                                .padding()
             }
+            
         }}
     
 //    let scene = TestView()

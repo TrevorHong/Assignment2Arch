@@ -195,18 +195,17 @@ struct SceneViewWrapper: UIViewRepresentable {
         cameraNode.position = SCNVector3(x: 1, y: 1, z: 1)
     }
     
-    func toggleFog(isEnabled: Bool, fogColor: UIColor = .blue, fogStart: CGFloat = 0.25, fogEnd: CGFloat = 2) {
-        guard let scene = mazeGenerator as? SCNScene else {
-            print("Scene not found")
-            return
-        }
+    func toggleFog(isEnabled: Bool, fogColor: UIColor = .blue, fogStart: CGFloat = 0.25, fogEnd: CGFloat = 2, fogDensity: Double = 0.2) {
+        let scene = mazeGenerator
+            
         
         if isEnabled {
         
             scene.fogStartDistance = fogStart
             scene.fogEndDistance = fogEnd
             scene.fogColor = fogColor
-            scene.fogDensityExponent = 0.2 // Adjust density if needed
+            let convertedDensity = CGFloat(fogDensity)
+            scene.fogDensityExponent = convertedDensity // Adjust density if needed
             print("Fog enabled with start: \(fogStart), end: \(fogEnd)")
         } else {
             scene.fogStartDistance = 0
@@ -216,6 +215,11 @@ struct SceneViewWrapper: UIViewRepresentable {
             print("Fog disabled")
         }
     }
+    
+    func updateFogDensity(_ density: Double) {
+        toggleFog(isEnabled: true, fogDensity: density)
+            print("Fog density updated to: \(density)")
+        }
 
     
     
