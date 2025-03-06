@@ -37,6 +37,12 @@ struct ContentView: View {
                                 sceneWrapper.handleTap()
                             }
                     )
+                    .gesture(
+                        TapGesture(count: 2)
+                            .onEnded {
+                                sceneWrapper.handleDoubleTap()
+                            }
+                    )
                 Button("Toggle Ambient Light") {
                     sceneWrapper.toggleAmbientLight()
                 }

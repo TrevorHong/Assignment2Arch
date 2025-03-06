@@ -147,7 +147,7 @@ struct SceneViewWrapper: UIViewRepresentable {
         let forward = SCNVector3(Float(forwardX), forwardY, Float(forwardZ))
         
         // Define how far the camera should move when a tap is detected
-        let moveDistance: Float = -1.0 // You can adjust this value for faster/slower movement
+        let moveDistance: Float = -0.75 // You can adjust this value for faster/slower movement
         
         // Move the camera forward along the forward vector
         let moveVector = SCNVector3(forward.x * moveDistance, forward.y * moveDistance, forward.z * moveDistance)
@@ -185,6 +185,14 @@ struct SceneViewWrapper: UIViewRepresentable {
         cameraNode.eulerAngles = newEulerAngles
 
 //        print("Camera rotated to: \(cameraNode.eulerAngles)")
+    }
+    
+    func handleDoubleTap() {
+        guard let cameraNode = mazeGenerator.rootNode.childNode(withName: "cameraNode", recursively: true) else {
+            print("Camera node not found")
+            return
+        }
+        cameraNode.position = SCNVector3(x: 1, y: 1, z: 1)
     }
     
     
