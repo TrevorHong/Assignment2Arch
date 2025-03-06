@@ -81,17 +81,17 @@ struct SceneViewWrapper: UIViewRepresentable {
         mazeGenerator.rootNode.addChildNode(cameraNode)
         
         // Add the flashlight and attach it to the camera node
-        addFlashlightToScene(cameraNode: cameraNode)
+        addFlashlightToScene(parentNode: mazeGenerator.rootNode)
     }
 
-    func addFlashlightToScene(cameraNode: SCNNode) {
+    func addFlashlightToScene(parentNode: SCNNode) {
         let flashlightNode = flashlight.getLightNode()
         
         // Add the flashlight as a child of the camera node
-        cameraNode.addChildNode(flashlightNode)
+        parentNode.addChildNode(flashlightNode)
         
         // Optionally, adjust the flashlight's position relative to the camera
-        flashlightNode.position = SCNVector3(0, 0, -1)  // Adjust flashlight position in front of the camera
+//        flashlightNode.position = SCNVector3(0, 0, -1)  // Adjust flashlight position in front of the camera
     }
 
     func startCubeRotation() {
