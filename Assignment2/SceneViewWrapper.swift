@@ -110,7 +110,7 @@ struct SceneViewWrapper: UIViewRepresentable {
     }
     
     func toggleAmbientLight() {
-        ambientLightNode.isHidden.toggle()
+        ambientLight.getLightNode().isHidden.toggle()
     }
     func toggleFlashLight() {
         flashlight.getLightNode().isHidden.toggle()
