@@ -112,6 +112,9 @@ struct SceneViewWrapper: UIViewRepresentable {
     func toggleAmbientLight() {
         ambientLightNode.isHidden.toggle()
     }
+    func toggleFlashLight() {
+        flashlight.getLightNode().isHidden.toggle()
+    }
     func handleTap() {
         // Handle tap to move the camera forward based on its rotation (eulerAngles)
         print("Tap detected, moving the camera forward based on its rotation.")
